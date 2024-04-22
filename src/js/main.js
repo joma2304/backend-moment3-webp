@@ -47,10 +47,33 @@ async function showApi() {
         descriptionLabel.textContent = `Beskrivning: ${experience.description}`; //Skapa p till beskrivning
         listItem.appendChild(descriptionLabel);
 
+        const deleteButton = document.createElement('button'); //Skapar delete knapp
+        deleteButton.textContent = 'Ta bort'; //Knappens innehåll
+        deleteButton.addEventListener('click', () => deleteExperience(experience._id)); //Eventlistner för knapp att ta bort, om klickad körs funktion för att ta bort
+        listItem.appendChild(deleteButton); //Slår ihop
+
         cvList.appendChild(listItem); // Slå ihop allt
     });
 }
+//Funktion för att ta bort från listan
+async function deleteExperience(id) {
+    try {
+        const response = await fetch(`${url}/${id}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error("Det gick inte att ta bort erfarenheten");
+        } 
+        location.reload(); //Ladda om sidan för att visa uppdaterad lista
+    } catch (error) {
+        console.error("Fel vid radering", error);
+    }
+}
+
+
 
 showApi(); //Kör funktionen
+
+
 });
 
