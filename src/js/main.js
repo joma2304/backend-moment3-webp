@@ -72,7 +72,56 @@ async function deleteExperience(id) {
 
 
 
-showApi(); //Kör funktionen
+showApi(); //Kör funktionen showAPI
+
+//För att lÄgga till i API/lista
+
+const addExperienceForm = document.getElementById('add-experience-form');
+const errorMessage = document.getElementById('error-message');
+
+addExperienceForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const jobtitle = document.getElementById('jobtitle').value.trim(); // Hämta data från form med value, Trim för att ta bort blanksteg
+  const companyname = document.getElementById('companyname').value.trim(); // Hämta data från form med value, Trim för att ta bort blanksteg
+  const location = document.getElementById('location').value.trim(); // Hämta data från form med value, Trim för att ta bort blanksteg
+  const description = document.getElementById('description').value.trim(); // Hämta data från form med value, Trim för att ta bort blanksteg
+
+  // Kontrollera om någon av inputfälten är tomma eller bara innehåller mellanslag
+  if (!jobtitle || !companyname || !location || !description) {
+    errorMessage.style.display = 'block'; //Visa felmeddelande
+    return;
+  }
+
+  errorMessage.style.display = 'none'; //Dölj felmeddelande
+
+  const formData = { //Objekt med insamlad data
+    jobtitle,
+    companyname,
+    location,
+    description
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST', //POst för att lägga till
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData) //OMvandlar objekt till json
+    });
+
+    if (!response.ok) {
+      throw new Error('Kunde inte lägga till erfarenhet'); //OM inte status = 200
+    }
+
+    // Skickas till index för att se tillagd erfarenhet
+    window.location.href = 'index.html';
+  } catch (error) {
+    console.error('Fel vid lägg till erfarenhet', error); //Felmeddelande
+  }
+});
+
 
 
 });

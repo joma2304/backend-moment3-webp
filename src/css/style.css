@@ -83,3 +83,60 @@ h2 {
     color: #383838; 
     font-size: 18px; 
 }
+
+button {
+    background-color: #329fbd; 
+    border: none;
+    color: white;
+    padding: 10px 20px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px; 
+  }
+  
+
+  button:hover {
+    background-color: #27927b; 
+  }
+
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #d7eae9;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#error-message {
+    display: none;
+    margin-top: 16px;
+    color: red;
+}
