@@ -140,3 +140,12 @@ form input[type="text"] {
     margin-top: 16px;
     color: red;
 }
+
+.omtext {
+    max-width: 600px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+}
